@@ -13,5 +13,9 @@ public class ToDoList {
     items.add(item);
   }
 
+  public void removeItem(Item item) {
+    items.remove(item);
+  }
+
 
 }

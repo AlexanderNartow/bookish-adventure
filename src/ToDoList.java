@@ -24,14 +24,14 @@ public class ToDoList {
     System.out.println("Список дел:");
     for (int i = 0; i < items.size(); i++) {
       Item item = items.get(i);
-      System.out.println((i + 1) + ". " + item.Description());
+      System.out.println((i + 1) + ". " + item.getDescription());
     }
   }
 
   public void saveItemToFile(String filename) {
     try (FileWriter writer = new FileWriter(filename)) {
       for (Item item : items) {
-        writer.write(item.Description() + "\n");
+        writer.write(item.getDescription() + "\n");
 
       }
       System.out.println("список задач сохранен с в списке задач: " + filename);

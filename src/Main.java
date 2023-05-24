@@ -18,19 +18,19 @@ public class Main {
       if (choice == 1) {
         System.out.print("Введите описание задачи: ");
         String description = scanner.nextLine();
-        Task task = new Task(description); //TODO
-        todoList.addTask(task);
+        Item item = new Item(description); //TODO
+        todoList.addItem(item);
       } else if (choice == 2) {
         System.out.print("Введите номер задачи для удаления: ");
-        int taskNumber = scanner.nextInt();
+        int itemNumber = scanner.nextInt();
         scanner.nextLine();
-        todoList.removeTaskByNumber(taskNumber);
+        todoList.removeItemByNumber(itemNumber);
       } else if (choice == 3) {
-        todoList.printTasks();
+        todoList.printItems();
       } else if (choice == 4) {
         System.out.print("Введите имя файла для сохранения списка задач: ");
         String filename = scanner.nextLine();
-        todoList.saveTasksToFile(filename);
+        todoList.saveItemToFile(filename);
       } else if (choice == 5) {
         break;
       } else {

@@ -1,7 +1,7 @@
 import java.util.Date;
 
 public class Item {
-  class Task {
+  class Item {
     private String description;
     public Item(String description) {
       this.description = description;

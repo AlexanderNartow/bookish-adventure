@@ -9,4 +9,9 @@ public class ToDoList {
     items = new ArrayList<>();
   }
 
+  public void addItem(Item item) {
+    items.add(item);
+  }
+
+
 }

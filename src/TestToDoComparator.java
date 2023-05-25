@@ -34,6 +34,9 @@ class TestToDoComparator {
     String filePath = "todo.txt";
     toDoList.saveItemsToFile(filePath);
 
+    ToDoList loadedList = new ToDoList();
+    loadedList.loadItemsFromFile(filePath);
+
 
   }
 }

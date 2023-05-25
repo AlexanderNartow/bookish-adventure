@@ -1,11 +1,19 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
-public class ToDoList {
+class ToDoList {
 
-  private List<Item> items;
+  private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+  private final List<Item> items;
 
   public ToDoList() {
     items = new ArrayList<>();
@@ -19,24 +27,50 @@ public class ToDoList {
     items.remove(item);
   }
 
-
   public void printItems() {
     System.out.println("Список дел:");
     for (int i = 0; i < items.size(); i++) {
       Item item = items.get(i);
-      System.out.println((i + 1) + ". " + item.getDescription());
+      System.out.println((i + 1) + ". " + item);
     }
   }
 
-  public void saveItemToFile(String filename) {
-    try (FileWriter writer = new FileWriter(filename)) {
+  public void saveItemsToFile(String filePath) {
+    try (FileWriter writer = new FileWriter(filePath)) {
       for (Item item : items) {
-        writer.write(item.getDescription() + "\n");
-
+        writer.write(item.getDescription() + "|" + dateFormat.format(item.getDate()) + "\n");
       }
-      System.out.println("список задач сохранен с в списке задач: " + filename);
+      writer.close();
+      System.out.println("Список задач сохранен в файл: " + Main.FILE_PATH);
     } catch (IOException e) {
-      System.out.println("ощибка в сохранении списка в файл");
+      System.out.println("Ошибка при сохранении списка в файл.");
+    }
+  }
+
+  public void loadItemsFromFile(String filePath) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+      String line;
+      items.clear();
+
+      while ((line = reader.readLine()) != null) {
+        String[] parts = line.split("\\|");
+        if (parts.length == 2) {
+          String description = parts[0];
+          Date date = null;
+          try {
+            date = dateFormat.parse(parts[1]);
+          } catch (ParseException e) {
+            System.out.println("Некоректный формат даты в файле");
+          }
+          Item item = new Item(description, date);
+          items.add(item);
+
+        }
+      }
+      System.out.println("Список задач загружен из файла: " + Main.FILE_PATH);
+      printItems();
+    } catch (IOException e) {
+      System.out.println("Ошибка при загрузке списка из файла.");
     }
   }
 
@@ -44,9 +78,28 @@ public class ToDoList {
     if (itemNumber >= 1 && itemNumber <= items.size()) {
       Item item = items.get(itemNumber - 1);
       items.remove(item);
-      System.out.println("Задача удалена");
+      System.out.println("Задача удалена.");
     } else {
-      System.out.println("Не корректный ввод");
+      System.out.println("Некорректный номер задачи.");
     }
+
+  }
+
+  public void sortItemsByDate() {
+    Collections.sort(items, new Comparator<Item>() {
+      @Override
+      public int compare(Item item1, Item item2) {
+        Date date1 = item1.getDate();
+        Date date2 = item2.getDate();
+        if (date1 == null && date2 == null) {
+          return 0;
+        } else if (date1 == null) {
+          return 1;
+        } else if (date2 == null) {
+          return -1;
+        }
+        return date1.compareTo(date2);
+      }
+    });
   }
 }

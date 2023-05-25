@@ -20,6 +20,12 @@ class TestToDoComparator {
     Assertions.assertEquals(item1, toDoList.getItems().get(0));
     Assertions.assertEquals(item2, toDoList.getItems().get(1));
     Assertions.assertEquals(item3, toDoList.getItems().get(2));
+    toDoList.removeItemByNumber(2);
+
+    Assertions.assertEquals(2, toDoList.getItems().size());
+    Assertions.assertEquals(item2, toDoList.getItems().get(0));
+    Assertions.assertEquals(item3, toDoList.getItems().get(1));
+
 
   }
 }

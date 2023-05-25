@@ -37,6 +37,14 @@ class TestToDoComparator {
     ToDoList loadedList = new ToDoList();
     loadedList.loadItemsFromFile(filePath);
 
+    Assertions.assertEquals(3, loadedList.getItems().size());
+    Assertions.assertEquals(item1.getDescription(), loadedList.getItems().get(0).getDescription());
+    Assertions.assertEquals(item1.getDate(), loadedList.getItems().get(0).getDate());
+    Assertions.assertEquals(item2.getDescription(), loadedList.getItems().get(1).getDescription());
+    Assertions.assertEquals(item2.getDate(), loadedList.getItems().get(1).getDate());
+    Assertions.assertEquals(item3.getDescription(), loadedList.getItems().get(2).getDescription());
+    Assertions.assertEquals(item3.getDate(), loadedList.getItems().get(2).getDate());
+
 
   }
 }

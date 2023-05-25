@@ -31,6 +31,9 @@ class TestToDoComparator {
     Assertions.assertEquals(item1, toDoList.getItems().get(1));
     Assertions.assertEquals(item3, toDoList.getItems().get(2));
 
+    String filePath = "todo.txt";
+    toDoList.saveItemsToFile(filePath);
+
 
   }
 }

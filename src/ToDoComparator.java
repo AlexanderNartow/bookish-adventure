@@ -1,9 +1,9 @@
+import java.util.Comparator;
 import java.util.Date;
 
-public class ToDoComparator implements compare {
+public class ToDoComparator implements Comparator<Item> {
 
   @Override
-
   public int compare(Item item1, Item item2) {
     Date date1 = item1.getDate();
     Date date2 = item2.getDate();

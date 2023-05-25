@@ -43,6 +43,7 @@ public class Main {
           todoList.removeItemByNumber(itemNumber);
         } else if (choice == 3) {
           todoList.sortItemsByDate();
+
           todoList.printItems();
         } else if (choice == 4) {
           todoList.saveItemsToFile(FILE_PATH);

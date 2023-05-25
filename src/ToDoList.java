@@ -85,7 +85,8 @@ class ToDoList {
   }
 
   public void sortItemsByDate() {
-    Collections.sort(items, new) {
+    Collections.sort(items, new ToDoComparator());
+    {
 
     }
 

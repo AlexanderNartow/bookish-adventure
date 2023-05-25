@@ -25,6 +25,11 @@ class TestToDoComparator {
     Assertions.assertEquals(2, toDoList.getItems().size());
     Assertions.assertEquals(item2, toDoList.getItems().get(0));
     Assertions.assertEquals(item3, toDoList.getItems().get(1));
+    toDoList.sortItemsByDate();
+
+    Assertions.assertEquals(item2, toDoList.getItems().get(0));
+    Assertions.assertEquals(item1, toDoList.getItems().get(1));
+    Assertions.assertEquals(item3, toDoList.getItems().get(2));
 
 
   }

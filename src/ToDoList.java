@@ -95,4 +95,14 @@ class ToDoList {
     }
 
   }
+
+  public void editItem(int itemNumber, String newDescription) {
+    if (itemNumber >= 1 && itemNumber <= items.size()) {
+      Item item = items.get(itemNumber - 1);
+      item.setDescription(newDescription);
+      System.out.println("Задача отредактирована.");
+    } else {
+      System.out.println("Некорректный номер задачи.");
+    }
+  }
 }

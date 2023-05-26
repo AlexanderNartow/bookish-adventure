@@ -20,7 +20,8 @@ public class Main {
         System.out.println("3. Вывести список задач");
         System.out.println("4. Сохранить список задач в файл");
         System.out.println("5. Вывести список задач из файла");
-        System.out.println("6. Выйти");
+        System.out.println("6. Редактировать задачу");
+        System.out.println("7. Выйти");
         System.out.print("===Выберите действие:=== ");
         int choice = scanner.nextInt();
         scanner.nextLine();
@@ -55,7 +56,13 @@ public class Main {
           todoList.printItems();
 
         } else if (choice == 6) {
-          todoList.saveItemsToFile(FILE_PATH);
+          System.out.print("Введите номер задачи для редактирования: ");
+          int itemNumber = scanner.nextInt();
+          scanner.nextLine();
+          System.out.print("Введите новое описание задачи: ");
+          String newDescription = scanner.nextLine();
+          todoList.editItem(itemNumber, newDescription);
+        } else if (choice == 7) {
           break;
         } else {
           System.out.println("Некорректный выбор.");

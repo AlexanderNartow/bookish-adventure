@@ -12,6 +12,7 @@ public class Main {
     Scanner scanner = new Scanner(System.in);
     System.out.println("=== Мои Задачи ===");
     ToDoList todoList = new ToDoList();
+    todoList.loadItemsFromFile(FILE_PATH);
     while (true) {
       try {
         System.out.println("1. Добавить задачу");

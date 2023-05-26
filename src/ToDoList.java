@@ -44,7 +44,7 @@ class ToDoList {
         writer.write(item.getDescription() + "|" + dateFormat.format(item.getDate()) + "\n");
       }
       writer.close();
-      System.out.println("Список задач сохранен в файл: " + Main.FILE_PATH);
+      System.out.println("Список задач сохранен в файл: " + filePath);
     } catch (IOException e) {
       System.out.println("Ошибка при сохранении списка в файл.");
     }

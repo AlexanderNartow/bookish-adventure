@@ -10,6 +10,7 @@ public class Main {
 
   public static void main(String[] args) throws InputMismatchException {
     Scanner scanner = new Scanner(System.in);
+    System.out.println("=== Мои Задачи ===");
     ToDoList todoList = new ToDoList();
     while (true) {
       try {
@@ -19,7 +20,7 @@ public class Main {
         System.out.println("4. Сохранить список задач в файл");
         System.out.println("5. Вывести список задач из файла");
         System.out.println("6. Выйти");
-        System.out.print("Выберите действие: ");
+        System.out.print("===Выберите действие:=== ");
         int choice = scanner.nextInt();
         scanner.nextLine();
         if (choice == 1) {
@@ -53,6 +54,7 @@ public class Main {
           todoList.printItems();
 
         } else if (choice == 6) {
+          todoList.saveItemsToFile(FILE_PATH);
           break;
         } else {
           System.out.println("Некорректный выбор.");

@@ -1,4 +1,3 @@
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 class Item {
@@ -29,8 +28,10 @@ class Item {
 
   @Override
   public String toString() {
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    String dateString = (date != null) ? dateFormat.format(date) : "Не задана";
-    return "Задача: " + description + " | Дата: " + dateString;
+    return "=== Задача ===" +
+        "\nОписание: " + description +
+        "\nДата: " + ((date != null) ? date.toString() : "Не задана") +
+        "\n";
   }
+
 }
